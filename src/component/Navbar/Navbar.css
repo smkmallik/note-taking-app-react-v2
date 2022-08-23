@@ -1,85 +1,59 @@
 .navbar {
-    grid-area: navbar;
-    box-shadow: 2px 2px 10px rgb(211, 211, 211);
+  grid-area: navbar;
+  box-shadow: 2px 2px 10px var(--BOX-SHADOW-LIGHTER);
 }
 .nav-padding {
-    padding: 0 2rem 0 2rem;
+  padding: 0 2rem 0 2rem;
 }
 .icons-alignment {
-    text-decoration: none;
-    list-style: none;
+  text-decoration: none;
+  list-style: none;
 }
 .link-alignment {
-    margin: 4.9rem 7rem 0 0;
+  margin: 4.9rem 7rem 0 0;
 }
 .ecom-link-color {
-    color: #475569;
+  color: var(--COLOR-SOCIAL-ICON);
 }
 .home-alignment {
-    margin: 4.9rem 2rem 0 0;
+  margin: 4.9rem 2rem 0 0;
 }
 .ecom-input {
-    max-width: 25rem;
-    width: 100%;
+  max-width: 25rem;
+  width: 100%;
 }
 .link:hover {
-    cursor: pointer;
-    color: #15803d;
+  cursor: pointer;
+  color: var(--PRIMARY-HOVER);
 }
 .dropdown {
-    position: relative;
+  position: relative;
 }
 .dropdown-menu {
-    position: absolute;
-    right: 0;
-    background-color: #bbf7d0;
-    color: #475569;
-    padding: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 2px 5px 0 rgb(211, 211, 211);
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  right: 0;
+  background-color: var(--COLOR-SECONDARY);
+  color: var(--COLOR-SOCIAL-ICON);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 5px 0 var(--BOX-SHADOW-LIGHTER);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  display: flex;
+  flex-direction: column;
 }
 .dropdown > .link:focus + .dropdown-menu {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 .dropdown-content {
-    text-decoration: none;
-    padding: 5px;
+  text-decoration: none;
+  padding: 5px;
 }
 .login-link:hover {
-    color: #f97316;
+  color: var(--NOTIFICATION-COLOR);
 }
 .profile:hover {
-    color: #f97316;
-}
-
-.component-libraryl-link {
-    text-decoration: none;
-    color: #16a34a;
-}
-
-.content-header {
-    font-size: 4.3rem;
-    font-weight: 700;
-    line-height: 6.4rem;
-    letter-spacing: 1px;
-    color: black;
-    margin-bottom: 1rem;
-}
-
-.nav-component {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f9fafb;
-    box-shadow: 5px 0 10px rgb(211, 211, 211);
-}
-
-.nav-padding {
-    padding: 0 2rem 0 2rem;
+  color: var(--NOTIFICATION-COLOR);
 }
