@@ -1,11 +1,11 @@
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from 'axios';
 
 const NoteContext = createContext({});
 
 const NoteProvider = ({ children }) => {
-
     const [notes, setNotes] = useState([]);
+    const [deletedNotes, setDeletedNotes] = useState([]);
 
     useEffect(() => {
         (async() => {
@@ -35,8 +35,27 @@ const NoteProvider = ({ children }) => {
         }
     }
 
+    const moveToTrash = (note) => {
+        setDeletedNotes((prev) => [...prev, note]);
+    }
+
+    const deleteNoteApiCall = async (notesId, note) => {
+        const encodedToken = localStorage.getItem("token");
+        const config = {
+            headers: {
+                authorization: encodedToken
+            }
+        };
+        try {
+            const response = await axios.delete(`/api/notes/${notesId}`, config);
+            setNotes(response.data.notes);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     return (
-        <NoteContext.Provider value={{ addNotes, notes }}>
+        <NoteContext.Provider value={{ addNotes, notes, moveToTrash, deletedNotes, deleteNoteApiCall, setDeletedNotes }}>
             {children}
         </NoteContext.Provider>
     )
