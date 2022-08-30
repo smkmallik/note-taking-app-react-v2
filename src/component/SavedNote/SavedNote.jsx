@@ -1,11 +1,12 @@
 import './SavedNote.css'
 import { DeleteIcon, ArchiveIcon, EditIcon } from '../../asset/svg/allsvg'
-import { useArchive, useDeleteNote } from '../../context'
+import { useDeleteNote, useArchive } from '../../context'
 
 const SavedNote = ({ note }) => {
-  const { title, priority, tags, mainContent, _id } = note
+  const { title, priority, tags, mainContent, _id, date } = note
   const { deleteNoteApiCall, moveToTrash } = useDeleteNote()
   const { moveToArchive } = useArchive()
+
   return (
     <div>
       <div className='add-saved-note'>
@@ -15,7 +16,7 @@ const SavedNote = ({ note }) => {
         </div>
         <div className='note-text'>{mainContent}</div>
         <div className='date-priority'>
-          <div>17/04/22</div>
+          <div className='pd-top'>{date}</div>
           <div className='priority-chips'>{priority}</div>
         </div>
         <div className='button-display'>
@@ -45,5 +46,4 @@ const SavedNote = ({ note }) => {
     </div>
   )
 }
-
 export { SavedNote }

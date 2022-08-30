@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { ArchiveProvider, AuthProvider, DeleteProvider, NoteProvider } from "./context";
+import { ArchiveProvider, AuthProvider, DeleteProvider, FilterProvider, NoteProvider } from "./context";
 
 
 // Call make Server
@@ -14,13 +14,15 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <NoteProvider>
-          <DeleteProvider>
-            <ArchiveProvider>
-              <App />
-            </ArchiveProvider>
-          </DeleteProvider>
-        </NoteProvider>
+        <FilterProvider>
+          <NoteProvider>
+            <DeleteProvider>
+              <ArchiveProvider>
+                <App />
+              </ArchiveProvider>
+            </DeleteProvider>
+          </NoteProvider>
+        </FilterProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
