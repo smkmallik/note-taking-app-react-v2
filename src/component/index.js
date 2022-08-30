@@ -1,8 +1,8 @@
-import { ArchiveNote } from './ArchiveNote/ArchiveNote'
 import { Navbar } from './Navbar/Navbar'
+import { Sidebar } from './Sidebar/Sidebar'
 import { AddNote } from './Note/Note'
 import { SavedNote } from './SavedNote/SavedNote'
-import { Sidebar } from './Sidebar/Sidebar'
 import { TrashNote } from './TrashNote/TrashNote'
+import { ArchiveNote } from './ArchiveNote/ArchiveNote'
 
-export { Navbar, Sidebar, SavedNote, AddNote, TrashNote, ArchiveNote }
+export { Navbar, Sidebar, AddNote, SavedNote, TrashNote, ArchiveNote }
