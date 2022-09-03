@@ -1,5 +1,5 @@
 .add-saved-note {
-  width: 33%;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

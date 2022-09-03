@@ -1,15 +1,24 @@
 import './SavedNote.css'
 import { DeleteIcon, ArchiveIcon, EditIcon } from '../../asset/svg/allsvg'
-import { useDeleteNote, useArchive } from '../../context'
+import { useDeleteNote, useArchive, useNote } from '../../context'
+import { useState } from 'react'
+import { EditNote } from '../EditNote/EditNote'
 
 const SavedNote = ({ note }) => {
-  const { title, priority, tags, mainContent, _id, date } = note
+  const { contentOnEditNote } = useNote()
+  const { title, priority, tags, mainContent, _id, date,noteColor } = note
   const { deleteNoteApiCall, moveToTrash } = useDeleteNote()
   const { moveToArchive } = useArchive()
+  const [openModal, setOpenModal] = useState(false);
+
+  const editNoteFunc = (_id) => {
+    setOpenModal((open) => !open);
+    contentOnEditNote(_id);
+  }
 
   return (
     <div>
-      <div className='add-saved-note'>
+      <div style={{ backgroundColor: noteColor }}className='add-saved-note'>
         <div className='note-title'>
           {title}
           <div className='tag-chips'># {tags}</div>
@@ -37,10 +46,16 @@ const SavedNote = ({ note }) => {
             <ArchiveIcon />
             <span className='tooltiptext'>Archive note</span>
           </button>
-          <button className='note-btn tooltip'>
+          <button 
+            className='note-btn tooltip'
+            onClick={() => editNoteFunc(_id)}
+          >
             <EditIcon />
             <span className='tooltiptext'>Edit note</span>
           </button>
+          {
+            openModal && <EditNote setOpenModal={setOpenModal} _id={_id} />
+          }
         </div>
       </div>
     </div>
