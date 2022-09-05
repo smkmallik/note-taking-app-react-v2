@@ -8,6 +8,7 @@
   z-index: 500;
 }
 .modal-background {
+  --BACKGROUND-MODAL: hsla(0,2%,55%,.7);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -30,4 +31,21 @@
   flex-direction: column;
   width: 100%;
   position: relative;
+}
+.update-icon {
+  display: none;
+}
+@media only screen and (max-width: 700px) {
+  .update-btn {
+    display: none;
+  }
+  .update-icon-mediaquery {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+  }
 }

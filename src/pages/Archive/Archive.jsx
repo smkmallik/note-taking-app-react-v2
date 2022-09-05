@@ -1,8 +1,10 @@
-import { ArchiveNote, Navbar, Sidebar } from "../../component";
+import { ArchiveNote, Footer, Navbar, Sidebar } from "../../component";
 import { useArchive } from "../../context";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import './Archive.css';
 
 const Archive = () => {
+  useDocumentTitle("ArchivePage")
   const { archiveNote } = useArchive();
   return (
     <>
@@ -18,6 +20,9 @@ const Archive = () => {
               ))
             }
           </div>
+        </div>
+        <div className="footer footer-mediaquery">
+            <Footer />
         </div>
       </div>
     </>

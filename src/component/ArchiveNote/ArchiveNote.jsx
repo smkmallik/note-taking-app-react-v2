@@ -1,5 +1,5 @@
 import { useDeleteNote, useArchive } from '../../context'
-import { DeleteIcon, UndoIcon, EditIcon } from '../../asset/svg/allsvg'
+import { DeleteIcon, UndoIcon } from '../../asset/svg/allsvg'
 
 const ArchiveNote = ({ archive }) => {
   const { moveToTrash } = useDeleteNote()
@@ -35,10 +35,6 @@ const ArchiveNote = ({ archive }) => {
           >
             <DeleteIcon />
             <span className='tooltiptext'>Delete note</span>
-          </button>
-          <button className='note-btn tooltip'>
-            <EditIcon />
-            <span className='tooltiptext'>Edit note</span>
           </button>
         </div>
       </div>

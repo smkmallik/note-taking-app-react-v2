@@ -1,8 +1,10 @@
 import heroSvg from "../../asset/svg/hero.svg";
 import "./LandingPage.css";
 import {Link} from 'react-router-dom';
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const LandingPage = () => {
+  useDocumentTitle("LandingPage")
   return (
     <div className='main-container md-pd-landingPage'>
       <div className='landingPage-content-container'>
@@ -23,7 +25,7 @@ const LandingPage = () => {
             <button className='button btn-width sm-pd'>Start Taking Notes</button>
         </Link>
       </div>
-      <img src={heroSvg} alt='svg' />
+      <img src={heroSvg} alt='svg' className="hero-image-container" />
     </div>
   );
 };

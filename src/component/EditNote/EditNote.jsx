@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import ReactDom from 'react-dom';
-import { ColorPallete } from '../../asset/svg/allsvg';
+import { ColorPallete, SaveIcon } from '../../asset/svg/allsvg';
 import { useNote } from '../../context'
 import { colorsData } from '../Note/ColorData';
 import './EditNote.css'
+
 
 const EditNote = ({setOpenModal, _id}) => {
   const { editNote, setEditNote, updateNote } = useNote()
@@ -120,10 +121,16 @@ const EditNote = ({setOpenModal, _id}) => {
             )}
           </div>
           <button
-            className='no-border save-btn'
+            className='no-border save-btn update-btn'
             onClick={() => saveEditNote(editNote)}
           >
             Update
+          </button>
+          <button
+            className='update-icon update-icon-mediaquery no-border'
+            onClick={() => saveEditNote(editNote)}
+          >
+            <SaveIcon />
           </button>
         </div>
       </div>
