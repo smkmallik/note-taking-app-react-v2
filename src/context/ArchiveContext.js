@@ -1,7 +1,7 @@
 import { useContext, createContext, useState } from 'react'
 import axios from 'axios'
 import { useNote } from './index'
-import { deleteNoteToast, retrieveNoteToast  } from '../utils/toastify'
+import { deleteNoteToast } from '../utils/toastify'
 
 const ArchiveContext = createContext({})
 
