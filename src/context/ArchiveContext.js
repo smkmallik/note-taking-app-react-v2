@@ -1,6 +1,8 @@
 import { useContext, createContext, useState } from 'react'
 import axios from 'axios'
 import { useNote } from './index'
+import { deleteNoteToast, retrieveNoteToast  } from '../utils/toastify'
+
 const ArchiveContext = createContext({})
 
 const ArchiveProvider = ({ children }) => {
@@ -18,6 +20,7 @@ const ArchiveProvider = ({ children }) => {
       )
       setNotes(response.data.notes)
       setArchiveNote(response.data.archives)
+      deleteNoteToast("Note Archived");
     } catch (e) {
       console.log(e)
     }

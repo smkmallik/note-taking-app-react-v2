@@ -1,6 +1,7 @@
 import { useContext, createContext, useState } from 'react'
 import axios from 'axios'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { loginToast } from '../utils/toastify'
 
 const AuthContext = createContext({})
 
@@ -21,13 +22,19 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem('token', response.data.encodedToken)
       setUserLoggedIn(true)
       navigate(from, { replace: true })
+      loginToast("Login Successful");
     } catch (e) {
       console.error(e)
     }
   }
+
+  const logOut = () => {
+    localStorage.clear();
+    setUserLoggedIn(false);
+  }
   return (
     <AuthContext.Provider
-      value={{ loginHandler, loginInfo, setloginInfo, isUserLoggedIn }}
+      value={{ loginHandler, loginInfo, setloginInfo, isUserLoggedIn, logOut }}
     >
       {children}
     </AuthContext.Provider>

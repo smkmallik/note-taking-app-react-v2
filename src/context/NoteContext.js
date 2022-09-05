@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-
-import axios from 'axios'
+import { createUpdateNoteToast } from '../utils/toastify';
+import axios from 'axios';
 
 const NoteContext = createContext({})
 
@@ -58,8 +58,8 @@ const NoteProvider = ({ children }) => {
     try {
       const response = await axios.post(`/api/notes/${editNote._id}`, {note: editNote}, config);
       setNotes(response.data.notes);
-      console.log(response.data.notes);
       setEditNote(initialState);
+      createUpdateNoteToast("Note Updated");
     } catch (e) {
       console.log(e);
     }

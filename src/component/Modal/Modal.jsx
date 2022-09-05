@@ -1,31 +1,21 @@
-import { NavLink } from 'react-router-dom'
-import './Sidebar.css'
-import { useFilter, useNote } from '../../context'
+import Reactdom from "react-dom";
+import { useFilter } from "../../context";
+import "./Modal.css";
 
-const Sidebar = () => {
-  const { filterDispatch, filterState, initialFilterState } = useFilter()
-  const { notes } = useNote()
-  const activeStyle = ({ isActive }) => {
-    return isActive
-      ? 'active-link md-pd aside-heading  '
-      : 'inactive-link md-pd aside-heading  '
-  }
-
-  return (
+const Modal = ({ modal, setModal }) => {
+  const { filterDispatch, filterState, initialFilterState } = useFilter();
+  // const { notes } = useNote();
+  if (!modal) return null;
+  return Reactdom.createPortal(
     <>
-      <div className='sidebar md-margin sidebar-mediaquery'>
-        <NavLink to='/homePage' className={activeStyle}>
-          Home
-        </NavLink>
-        <NavLink to='/archive' className={activeStyle}>
-          Archive
-        </NavLink>
-        <NavLink to='/trash' className={activeStyle}>
-          Trash
-        </NavLink>
-        <div>
-          {/* Start of filter section */}
-          {notes && (
+      <div className='filter-modal-background'>
+        <div className='filter-modal-container'>
+          <div className='modal-content border'>
+            <div className='filter-btn-cross-modal'>
+              <button className='btn-cross' onClick={() => setModal(false)}>
+                X
+              </button>
+            </div>
             <div className='note-filter-sidebar md-pd'>
               <div className='clearAll-flex'>
                 <h3>Sort By Date</h3>
@@ -33,12 +23,12 @@ const Sidebar = () => {
                   className='clearAll'
                   onClick={() =>
                     filterDispatch({
-                      type: 'CLEAR_ALL',
+                      type: "CLEAR_ALL",
                       payload: { ...initialFilterState },
                     })
                   }
                 >
-                  ClearAll
+                  Clear All
                 </p>
               </div>
               <div className='filter'>
@@ -48,11 +38,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_DATE',
-                        payload: 'oldToNew',
+                        type: "SORT_BY_DATE",
+                        payload: "oldToNew",
                       })
                     }
-                    checked={filterState.sortByDate === 'oldToNew'}
+                    checked={filterState.sortByDate === "oldToNew"}
                   />
                   Sort from old to new
                 </label>
@@ -62,11 +52,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_DATE',
-                        payload: 'newToOld',
+                        type: "SORT_BY_DATE",
+                        payload: "newToOld",
                       })
                     }
-                    checked={filterState.sortByDate === 'newToOld'}
+                    checked={filterState.sortByDate === "newToOld"}
                   />
                   Sort from new to old
                 </label>
@@ -78,9 +68,12 @@ const Sidebar = () => {
                     type='checkbox'
                     className='filter-margin'
                     onChange={() =>
-                      filterDispatch({ type: 'SORT_BY_TAGS', payload: 'work' })
+                      filterDispatch({
+                        type: "SORT_BY_TAGS",
+                        payload: "work",
+                      })
                     }
-                    checked={filterState.sortByTags.includes('work')}
+                    checked={filterState.sortByTags.includes("work")}
                   />
                   Work
                 </label>
@@ -90,11 +83,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_TAGS',
-                        payload: 'health',
+                        type: "SORT_BY_TAGS",
+                        payload: "health",
                       })
                     }
-                    checked={filterState.sortByTags.includes('health')}
+                    checked={filterState.sortByTags.includes("health")}
                   />
                   Health
                 </label>
@@ -104,11 +97,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_TAGS',
-                        payload: 'exercise',
+                        type: "SORT_BY_TAGS",
+                        payload: "exercise",
                       })
                     }
-                    checked={filterState.sortByTags.includes('exercise')}
+                    checked={filterState.sortByTags.includes("exercise")}
                   />
                   Exercise
                 </label>
@@ -118,11 +111,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_TAGS',
-                        payload: 'chores',
+                        type: "SORT_BY_TAGS",
+                        payload: "chores",
                       })
                     }
-                    checked={filterState.sortByTags.includes('chores')}
+                    checked={filterState.sortByTags.includes("chores")}
                   />
                   Chores
                 </label>
@@ -135,11 +128,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_PRIORITY',
-                        payload: 'high',
+                        type: "SORT_BY_PRIORITY",
+                        payload: "high",
                       })
                     }
-                    checked={filterState.sortByPriority === 'high'}
+                    checked={filterState.sortByPriority === "high"}
                   />
                   High
                 </label>
@@ -149,11 +142,11 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_PRIORITY',
-                        payload: 'medium',
+                        type: "SORT_BY_PRIORITY",
+                        payload: "medium",
                       })
                     }
-                    checked={filterState.sortByPriority === 'medium'}
+                    checked={filterState.sortByPriority === "medium"}
                   />
                   Medium
                 </label>
@@ -163,20 +156,22 @@ const Sidebar = () => {
                     className='filter-margin'
                     onChange={() =>
                       filterDispatch({
-                        type: 'SORT_BY_PRIORITY',
-                        payload: 'low',
+                        type: "SORT_BY_PRIORITY",
+                        payload: "low",
                       })
                     }
-                    checked={filterState.sortByPriority === 'low'}
+                    checked={filterState.sortByPriority === "low"}
                   />
                   Low
                 </label>
               </div>
             </div>
-          )}
+          </div>
+          {/* </div> */}
         </div>
       </div>
-    </>
-  )
-}
-export { Sidebar }
+    </>,
+    document.getElementById("modal")
+  );
+};
+export { Modal };
